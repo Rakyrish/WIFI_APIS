@@ -1,0 +1,8 @@
+[wokwi]
+version = 1
+firmware = '.pio\build\esp32doit-devkit-v1\firmware.bin'
+elf = '.pio\build\esp32doit-devkit-v1\firmware.elf'
+[project]
+name = "esp32-webserver"
+[ports]
+"9080" = 80
