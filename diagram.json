@@ -3,18 +3,21 @@
   "author": "John Mbugua",
   "editor": "wokwi",
   "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": -110.36, "attrs": {} },
+    { "type": "wokwi-neopixel", "id": "rgb1", "top": 54.1, "left": 47, "attrs": {} },
     {
-      "type": "board-esp32-devkit-c-v4",
-      "id": "esp",
-      "top": 0,
-      "left": -110.36,
-      "attrs": {}
+      "type": "wokwi-led",
+      "id": "ledSignal",
+      "top": 90,
+      "left": 200,
+      "attrs": { "color": "red" }
     },
+    { "type": "wokwi-resistor", "id": "r1", "top": 130, "left": 200, "attrs": { "value": "220" } },
     {
-      "type": "wokwi-neopixel",
-      "id": "rgb1",
-      "top": 54.1,
-      "left": 47,
+      "type": "wokwi-membrane-keypad",
+      "id": "keypad1",
+      "top": -117.2,
+      "left": -407.2,
       "attrs": {}
     }
   ],
@@ -22,8 +25,21 @@
     [ "esp:5V", "rgb1:VDD", "red", [ "h192.15", "v-134.4", "h-9.6", "v0" ] ],
     [ "esp:GND.3", "rgb1:VSS", "black", [ "h28.8", "v-28.8", "h0", "v0", "h9.6" ] ],
     [ "esp:5", "rgb1:DIN", "green", [ "h48", "v-48", "h0" ] ],
+    [ "esp:4", "ledSignal:A", "orange", [ "h160", "v0" ] ],
+    [ "ledSignal:C", "r1:1", "black", [ "v40" ] ],
+    [ "r1:2", "esp:GND.2", "black", [ "h-60", "v-40" ] ],
     [ "esp:TX", "$serialMonitor:RX", "", [] ],
-    [ "esp:RX", "$serialMonitor:TX", "", [] ]
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+
+    /* Keypad connections */
+    [ "keypad1:R1", "esp:13", "blue", [] ],
+    [ "keypad1:R2", "esp:12", "blue", [] ],
+    [ "keypad1:R3", "esp:14", "blue", [] ],
+    [ "keypad1:R4", "esp:27", "blue", [] ],
+    [ "keypad1:C1", "esp:26", "green", [] ],
+    [ "keypad1:C2", "esp:25", "green", [] ],
+    [ "keypad1:C3", "esp:33", "green", [] ],
+    [ "keypad1:C4", "esp:32", "green", [] ]
   ],
   "dependencies": {}
 }
